@@ -34,5 +34,6 @@ const APP_PROVIDERS: Array<any> = [
 ];
 
 // TODO: eventually this would need to be enabled only if we are in production
-enableProdMode();
+//enableProdMode();
+
 bootstrap(App, APP_PROVIDERS);
