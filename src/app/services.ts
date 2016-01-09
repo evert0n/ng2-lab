@@ -6,14 +6,18 @@ import {Chores} from './services/chores';
 import {FIREBASE_APP_LINK, FIREBASE_CHORES_PATH} from './services/firebase';
 import {Icon} from './services/icon';
 import {User} from './services/user';
+import {Github} from './services/github';
 
 export * from './services/auth';
 export * from './services/chores';
 export * from './services/firebase';
 export * from './services/icon';
 export * from './services/user';
+export * from './services/github';
 
 export const SERVICES_PROVIDERS: Array<any> = [
+
+
 	provide(Chores, {
 		useFactory: (promise: Promise<User>) => {
 			return new Promise((resolve) => {
@@ -28,6 +32,7 @@ export const SERVICES_PROVIDERS: Array<any> = [
 			User
 		]
 	}),
+
 	provide(User, {
 		useFactory: (client: AuthClient) => {
 			// Authenticate Firebase and then create/get the user based on the key/email returned from Firebase after auth
@@ -47,11 +52,13 @@ export const SERVICES_PROVIDERS: Array<any> = [
 			AuthClient
 		]
 	}),
+
 	provide(AuthClient, {
 		useFactory: () => {
 			return new AuthClient();
 		}
 	}),
+
 	provide(Icon, {
 		useFactory: (http: Http) => {
 			return new Icon(http);
@@ -59,5 +66,15 @@ export const SERVICES_PROVIDERS: Array<any> = [
 		deps: [
 			Http
 		]
-	})
+	}),
+
+	provide(Github, {
+		useFactory: (http: Http) => {
+			return new Github(http);
+		},
+		deps: [
+			Http
+		]
+	}),
+
 ];

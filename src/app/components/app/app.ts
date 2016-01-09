@@ -9,7 +9,11 @@ import {Login} from '../login/login';
 import {ResetPassword} from '../reset_password/reset_password';
 import {Register} from '../register/register';
 import {Account} from '../account/account';
+
 import {Todos} from '../todos/todos';
+
+import {GithubIssueReader} from '../github_issue_reader/github_issue_reader';
+import {GithubIssueReaderRepo} from '../github_issue_reader_repo/github_issue_reader_repo';
 
 @Component({
 	moduleId: module.id, // CommonJS standard
@@ -44,6 +48,16 @@ import {Todos} from '../todos/todos';
 		path: '/login/...',
 		component: Auth,
 		as: 'Auth'
+	},
+	{
+		path: '/github-issue-reader',
+		component: GithubIssueReader,
+		as: 'GithubIssueReader'
+	},
+	{
+		path: '/github-issue-reader/repo/:org/:repo',
+		component: GithubIssueReaderRepo,
+		as: 'GithubIssueReaderRepo'
 	}
 ])
 

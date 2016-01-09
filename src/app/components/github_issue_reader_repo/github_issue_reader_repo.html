@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <a *ngFor="#issue of issues" (click)="showIssue(issue)" class="list-group-item">
+          {{issue.title}}
+          <br>
+          <span class="small">
+            <img src="{{issue.user.avatar_url}}" alt="..." class="img-rounded" width="24">
+            #{{issue.number}} opened {{issue.created_at}}, {{issue.comments}} comments
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div *ngIf="issue && issue.user">
+        <h2>#{{issue.number}} {{issue.title}}</h2>
+        <h5>
+          <img src="{{issue.user.avatar_url}}" alt="..." class="img-rounded" width="32">
+          <a href="{{issue.user.url}}">{{issue.user.login}}</a> created on {{issue.created_at}}
+        </h5>
+        <div [innerHtml]="issue.body_html" class="issue-body"></div>
+        <div *ngIf="issueComments" class="issue-comments">
+          <div *ngFor="#comment of issueComments" class="issue-comment">
+            <h6>
+              <img src="{{comment.user.avatar_url}}" alt="..." class="img-rounded" width="32">
+              <a href="{{comment.user.url}}">{{comment.user.login}}</a> commented on {{comment.created_at}}
+              <div [innerHtml]="comment.body_html" class="issue-comment-body"></div>
+            </h6>
+
+          </div>
+        </div>
+        <pre>{{issue|json}}</pre>
+      </div>
+    </div>
+  </div>
+</div>

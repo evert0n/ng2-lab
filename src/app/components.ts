@@ -10,3 +10,5 @@ export * from './components/todo_list/todo_list';
 export * from './components/todo_list_item/todo_list_item';
 export * from './components/todos/todos';
 export * from './components/todos_count/todos_count';
+export * from './components/github_issue_reader/github_issue_reader';
+export * from './components/github_issue_reader_repo/github_issue_reader_repo';

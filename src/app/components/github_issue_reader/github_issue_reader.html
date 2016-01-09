@@ -1,0 +1,12 @@
+<div class="container">
+
+	<p>Choose a repository:</p>
+	<div class="list-group">
+	  <a href="/#/github-issue-reader/repo/{{repo.full_name}}" class="list-group-item" *ngFor="#repo of repositories.items">
+			<span class="label label-default label-pill pull-xs-right">{{repo.stargazers_count}}</span>
+			<h4 class="list-group-item-heading">{{repo.full_name}}</h4>
+	    <p class="list-group-item-text">{{repo.description}}</p>
+	  </a>
+	</div>
+
+</div>
